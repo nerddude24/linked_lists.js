@@ -70,6 +70,11 @@ class LinkedList {
 	}
 
 	pop() {
+		if (this._tail == null) {
+			console.warn("Tried to pop tail when it's already null!");
+			return null;
+		}
+
 		let current = this._head;
 
 		// keep moving until you reach the node that's just before the tail.
@@ -159,6 +164,11 @@ class LinkedList {
 	removeAt(index) {
 		// remove head
 		if (index == 0) {
+			if (this._head == null) {
+				console.warn("Tried to remove head when it's already null!");
+				return null;
+			}
+
 			const removed = this._head;
 			this._head = this._head.next;
 
