@@ -6,20 +6,31 @@ class Node {
 }
 
 class LinkedList {
-	constructor(headVal) {
-		const node = new Node(headVal);
-		this._head = node;
-		this._tail = node;
+	constructor() {
+		this._head = null;
+		this._tail = null;
 	}
 
 	append(val) {
 		const node = new Node(val);
+		if (this._head == null && this._tail == null) {
+			this._head = node;
+			this._tail = node;
+			return;
+		}
+
 		this._tail.next = node;
 		this._tail = node;
 	}
 
 	prepend(val) {
 		const node = new Node(val);
+		if (this._head == null && this._tail == null) {
+			this._head = node;
+			this._tail = node;
+			return;
+		}
+
 		node.next = this._head;
 		this._head = node;
 	}
