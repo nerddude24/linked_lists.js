@@ -39,6 +39,7 @@ class LinkedList {
 		let current = this._head;
 		let numOfNodes = 0;
 
+		// this way of traversal is used throughout the class.
 		while (current != null) {
 			numOfNodes++;
 			current = current.next;
@@ -92,6 +93,7 @@ class LinkedList {
 			current = current.next;
 		}
 
+		// moved through entire list and didn't find target.
 		return false;
 	}
 
@@ -105,6 +107,7 @@ class LinkedList {
 			currentIndex++;
 		}
 
+		// moved through entire list and didn't find target.
 		return -1;
 	}
 
@@ -126,23 +129,23 @@ class LinkedList {
 	insertAt(val, index) {
 		// insert at head
 		if (index == 0) {
-			const node = new Node(val);
-			node.next = this._head;
-			this._head = node;
-
+			this.prepend(val);
 			return;
 		}
 
 		// else if index is not at head
 		let current = this._head.next;
-		let prev = this._head;
+		let prev = this._head; // keep track of previous node
 		let currentIndex = 1;
 
 		while (current != null) {
 			if (currentIndex == index) {
 				const node = new Node(val);
+
+				// add new node between current and prev nodes
 				prev.next = node;
 				node.next = current;
+
 				return;
 			}
 			prev = current;
@@ -150,7 +153,7 @@ class LinkedList {
 			currentIndex++;
 		}
 
-		throw new Error("Error: Tried to insert at invalid index");
+		console.warn("Warning: Tried to insert at invalid index");
 	}
 
 	removeAt(index) {
@@ -177,7 +180,8 @@ class LinkedList {
 			currentIndex++;
 		}
 
-		throw new Error("Error: Tried to remove at invalid index");
+		console.warn("Warning: Tried to remove at invalid index");
+		return null;
 	}
 }
 
