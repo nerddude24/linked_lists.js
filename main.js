@@ -11,3 +11,12 @@ list.append("snake");
 list.append("turtle");
 
 console.log(list.toString());
+console.log(list.at(1)); // cat
+console.log(list.removeAt(0)); // dog
+console.log(list.contains("hamster")); // true
+list.prepend("shotgun");
+console.log(list.toString());
+console.log(list.removeAt(3)); // hamster
+console.log(list.removeAt(3)); // snake
+console.log(list.removeAt(3)); // turtle
+console.log(list.toString());
