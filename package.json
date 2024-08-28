@@ -1,0 +1,26 @@
+{
+	"name": "linked_lists",
+	"version": "0.0.1",
+	"description": "Linked list implementation in JS.",
+  "type": "module",
+  "private": true,
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nerddude24/linked_lists.js.git"
+	},
+	"keywords": [
+		"dsa",
+		"algorithms",
+		"linked-list",
+		"data-structures"
+	],
+	"author": "nerddude",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/nerddude24/linked_lists.js/issues"
+	},
+	"homepage": "https://github.com/nerddude24/linked_lists.js#readme"
+}
