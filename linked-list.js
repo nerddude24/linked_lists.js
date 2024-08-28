@@ -123,9 +123,9 @@ class LinkedList {
 		}
 
 		// else if index is not at head
-		let current = this._head;
-		let prev = null;
-		let currentIndex = 0;
+		let current = this._head.next;
+		let prev = this._head;
+		let currentIndex = 1;
 
 		while (current != null) {
 			if (currentIndex == index) {
@@ -139,7 +139,34 @@ class LinkedList {
 			currentIndex++;
 		}
 
-		throw new Error("Error: Tried to insert at invalid index (out of range)");
+		throw new Error("Error: Tried to insert at invalid index");
+	}
+
+	removeAt(index) {
+		// remove head
+		if (index == 0) {
+			const removed = this._head;
+			this._head = this._head.next;
+
+			return removed;
+		}
+
+		// else if index is not at head
+		let current = this._head.next;
+		let prev = this._head;
+		let currentIndex = 1;
+
+		while (current != null) {
+			if (currentIndex == index) {
+				prev.next = current.next;
+				return current;
+			}
+			prev = current;
+			current = current.next;
+			currentIndex++;
+		}
+
+		throw new Error("Error: Tried to remove at invalid index");
 	}
 }
 
