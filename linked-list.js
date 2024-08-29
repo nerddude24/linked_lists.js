@@ -56,19 +56,6 @@ class LinkedList {
 		return this._tail;
 	}
 
-	at(index) {
-		let current = this._head;
-		let currentIndex = 0;
-
-		while (current != null) {
-			if (currentIndex == index) return current;
-			current = current.next;
-			currentIndex++;
-		}
-
-		return null;
-	}
-
 	pop() {
 		if (this._tail == null) {
 			console.warn("Tried to pop tail when it's already null!");
@@ -131,6 +118,19 @@ class LinkedList {
 		return str;
 	}
 
+	at(index) {
+		let current = this._head;
+		let currentIndex = 0;
+
+		while (current != null) {
+			if (currentIndex == index) return current.val;
+			current = current.next;
+			currentIndex++;
+		}
+
+		return null;
+	}
+
 	insertAt(val, index) {
 		// insert at head
 		if (index == 0) {
@@ -161,15 +161,26 @@ class LinkedList {
 		console.warn("Warning: Tried to insert at invalid index");
 	}
 
+	clear() {
+		this._head = null;
+		this._tail = null;
+	}
+
 	removeAt(index) {
 		// remove head
 		if (index == 0) {
 			if (this._head == null) {
-				console.warn("Tried to remove head when it's already null!");
+				console.warn("Warning: Tried to remove head when it's already null!");
 				return null;
 			}
 
-			const removed = this._head;
+			if (this.size() == 1) {
+				const removed = this._head.val;
+				this.clear(); // just clear when there is only one element.
+				return removed;
+			}
+
+			const removed = this._head.val;
 			this._head = this._head.next;
 
 			return removed;
@@ -183,7 +194,7 @@ class LinkedList {
 		while (current != null) {
 			if (currentIndex == index) {
 				prev.next = current.next;
-				return current;
+				return current.val;
 			}
 			prev = current;
 			current = current.next;
